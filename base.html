@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en" data-framework="marionettejs">
+<head>
+    <meta charset="utf-8">
+    <title>Hall of Fame</title>
+    <link rel="stylesheet" href="css/main-todo.css">
+    <link rel="stylesheet" href="css/base-todo.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<section id="votationapp">
+    <header id="header"></header>
+    <section id="main"></section>
+    <footer id="footer"></footer>
+</section>
+<footer id="info">
+    <p>Double-click to edit a todo</p>
+</footer>
+<script type="text/html" id="template-footer">
+    <span id="todo-count">
+				<strong><%= activeCount %></strong> <%= activeCountLabel() %>
+			</span>
+    <ul id="filters">
+        <li class="all">
+            <a href="#/">All</a>
+        </li>
+        <li class="active">
+            <a href="#/active">Active</a>
+        </li>
+        <li class="completed">
+            <a href="#/completed">Completed</a>
+        </li>
+    </ul>
+    <button id="clear-completed" <% if (!completedCount) { %>class="hidden"<% } %>>Clear completed</button>
+</script>
+<script type="text/html" id="template-header">
+    <h1>Hall of Fame</h1>
+    <span id="new-todo" class="glyphicon glyphicon-plus"></span>
+</script>
+<script type="text/html" id="template-pollItemView">
+    <div class="view">
+        <input class="toggle" type="checkbox" <% if (completed) { %>checked<% } %>>
+        <label><%- title %></label>
+        <button class="destroy"></button>
+    </div>
+    <input class="edit" value="<%- title %>">
+</script>
+<script type="text/html" id="template-pollListView">
+    <input id="toggle-all" type="checkbox">
+    <label for="toggle-all">Mark all as complete</label>
+    <ul></ul>
+</script>
+<!-- vendor libraries -->
+<!--<script src="node_modules/todomvc-common/base.js"></script>-->
+<script src="node_modules/jquery.js"></script>
+<script src="node_modules/underscore.js"></script>
+<script src="node_modules/backbone.js"></script>
+
+<script src="node_modules/backbone.local-storage.js"></script>
+<script src="node_modules/backbone.radio.js"></script>
+
+<script src="node_modules/backbone.marionette.js"></script>
+<!-- application -->
+<script src="scripts/Application.js"></script>
+<script src="scripts/Models.js"></script>
+<script src="scripts/Layout.js"></script>
+
+<!--<script src="js/TodoMVC.TodoList.Views.js"></script>-->
+<script src="scripts/Router.js"></script>
+<!--<script src="js/TodoMVC.FilterState.js"></script>-->
+<script src="scripts/lambdaVotation.js"></script>
+</body>
+</html>
